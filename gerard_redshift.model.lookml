@@ -13,3 +13,12 @@
 #     - join: users
 #       sql_on: ${users.id} = ${orders.user_id}
 - explore: order_items
+
+- explore: orders
+
+
+- explore: users
+  joins:
+    - join: orders
+      sql_on: ${orders.user_id} = ${users.id}
+      relationship: one_to_many
