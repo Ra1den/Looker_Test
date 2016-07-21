@@ -49,7 +49,7 @@
     sql: ${TABLE}.traffic_source
 
   - dimension: zip
-    type: number
+    type: zipcode
     sql: ${TABLE}.zip
 
   - measure: count
