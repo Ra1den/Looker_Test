@@ -12,13 +12,24 @@
 #       sql_on: ${orders.id} = ${order_items.order_id}
 #     - join: users
 #       sql_on: ${users.id} = ${orders.user_id}
-- explore: order_items
 
 - explore: orders
 
-
 - explore: users
+
+- explore: order_items
+#  view_label: 'Test'
+#  always_filter:
+#    orders.status: 'complete'
+#  sql_always_where: ${returned_time} is not null
+  persist_for: 1 hour
   joins:
     - join: orders
-      sql_on: ${orders.user_id} = ${users.id}
-      relationship: one_to_many
+      view_label: 'My Orders'
+      sql_on: ${orders.id} = ${order_items.order_id}
+      relationship: many_to_one
+
+    - join: users
+      sql_on: ${users.id} = ${orders.user_id}
+      relationship: many_to_one
+
