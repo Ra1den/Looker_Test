@@ -23,6 +23,7 @@
     sql: ${TABLE}.city
 
   - dimension: country
+    full_suggestions: true
     type: string
     sql: ${TABLE}.country
 
